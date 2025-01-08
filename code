@@ -1,0 +1,21 @@
+import os
+import cv2
+import matplotlib
+import numpy as np
+if __name__ == "__main__":
+    img_path = r"D:\riya\WhatsApp Image 2024-12-30 at 10.36.09 PM.jpeg"
+    img = cv2.imread(img_path)
+
+    if img is None:
+        print(f"Error: The image at {img_path} could not be loaded. Please check the file path.")
+    else:
+         rows, cols, channels = img.shape
+         print("Rows:", rows)
+         print("Cols:", cols)
+         print("Channels:", channels)
+    
+    cv2.imshow("ORIG Img", img)
+    
+    cv2.waitKey(0)
+    
+    cv2.destroyAllWindows()
