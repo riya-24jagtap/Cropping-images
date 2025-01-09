@@ -1,38 +1,35 @@
+
 import os
 import cv2
-import matplotlib
-import numpy as np
 if __name__ == "__main__":
-    image_path = "WhatsApp Image 2024-12-30 at 10.36.09 PM.jpeg"
-    image = cv2.imread(image_path)
+    
+    directory = os.getcwd()
+    orig_image_name = "orig img.jpeg"
+    orig_image_path = os.path.join(directory,orig_image_name)
+    orig_image = cv2.imread(orig_image_path)
   
-    if image is None:
-        print(f"Error: The image at {image_path} could not be loaded. Please check the file path.")
+    if orig_image is None:
+        print(f"Error: The image at {orig_image_path} could not be loaded.")
     else:
         
-         dimensions = image.shape
+         dimensions = orig_image.shape
          print("Dimensions: ", dimensions)
          height = dimensions[0]
          width = dimensions[1]
          
-         cropped_image = image[20: (height-390), 15:(width-15)]
+         cropped_image = orig_image[20: (height-390), 25:(width-15)]
          
-         cropped_image_path = "cropped_image.jpeg"
+         cropped_image_name = "cropped_image.jpeg"
+         cropped_image_path = os.path.join(directory, cropped_image_name)
          cv2.imwrite(cropped_image_path, cropped_image)
          print(f"Cropped image saved at: {cropped_image_path}")
          
-        #  rows, cols, channels = dimensions
+       
          
          print("Height: ", height)
          print("Width: ", width)
-        #  print("Rows:", rows)
-        #  print("Cols:", cols)
-        #  print("Channels:", channels)
-       
-
-
-    
-         cv2.imshow("ORIG image", image)
+         cv2.imshow("ORIG image", orig_image)
          cv2.imshow("Cropped image: ", cropped_image)
          cv2.waitKey(0)
          cv2.destroyAllWindows()
+
